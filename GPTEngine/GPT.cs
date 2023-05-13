@@ -1,14 +1,7 @@
-﻿using GPTEngine.Roles.Assistant;
-using GPTEngine.Roles.System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
-using System.Security.Principal;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace GPTEngine
 {
@@ -21,7 +14,7 @@ namespace GPTEngine
         public GPT()
         {
             _apiUrl = "https://api.openai.com/v1/chat/completions";
-            _apiKey = "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"; // Replace with your valid API key
+            _apiKey = "KEY"; // Replace with your valid API key
 
             // Set up HttpClient
             _httpClient = new HttpClient();
