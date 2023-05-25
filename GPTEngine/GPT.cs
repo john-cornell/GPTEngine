@@ -8,15 +8,16 @@ namespace GPTEngine
 {
     public class GPT
     {
-        string _apiUrl;
-        string _apiKey;
+        private string _apiUrl;
+        private string _model;
+        private string _apiKey;
 
         HttpClient _httpClient = new HttpClient();
-        public GPT(string apiKey = "")
+        public GPT(string apiKey, string model)
         {
             _apiUrl = "https://api.openai.com/v1/chat/completions";
             _apiKey = apiKey;
-
+            _model = model;
 
             // Set up HttpClient
             _httpClient = new HttpClient();
@@ -31,7 +32,7 @@ namespace GPTEngine
 
             // Serialize chat messages with the model property
             var settings = GetJsonSerializerSettings();
-            string jsonPayload = JsonConvert.SerializeObject(new { model = "gpt-3.5-turbo", messages = request.Data, temperature = 0.1 }, settings);
+            string jsonPayload = JsonConvert.SerializeObject(new { model = _model, messages = request.Data, temperature = 0.1 }, settings);
 
 
             // Send the request

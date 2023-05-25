@@ -39,7 +39,7 @@ namespace GPTEngine.Text.ViewModels
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            _gpt = new GPT(configuration["OpenApiKey"]);
+            _gpt = new GPT(configuration["OpenApiKey"], configuration["Model"]);
 
             SendToGPT = new AsyncRelayCommand(SendToGPTHandlerAsync);
             RoleChangedCommand = new RelayCommand(OnRoleChanged);
