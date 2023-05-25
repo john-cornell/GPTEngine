@@ -37,6 +37,7 @@ namespace GPTEngine.Text.ViewModels
             BuildRoles();
 
             _history = new ObservableCollection<string>();
+            History.Add("Please enter a word to define:");
 
             ResetConversation();
         }
@@ -87,10 +88,11 @@ namespace GPTEngine.Text.ViewModels
             _step1.AddMessage(Input);
             History.Add(Input);
             Input=string.Empty;
-            
-            GPTResponse response1 = await _gpt.Call(_step1);
 
-            await Console.Out.WriteLineAsync("Looking up definition ...");
+            History.Add("    > Looking up definition ...");
+
+            GPTResponse response1 = await _gpt.Call(_step1);
+            
             if (response1.IsError) History.Add($"Error: {response1.Error}");
             else
             {
@@ -98,12 +100,15 @@ namespace GPTEngine.Text.ViewModels
                 _step2.AddMessage(response1.Response);
             }
 
-            await Console.Out.WriteLineAsync("Thinking of a response ...");
+            History.Add("    > Thinking of a response ...");
 
             GPTResponse response2 = await _gpt.Call(_step2);
 
             if (response2.IsError) History.Add($"Error: {response2.Error}");
             else History.Add(response2.Response);
+
+            History.Add("-------------------------------------------------");
+            History.Add("Please enter a word to define:");
         }
 
         private void OnRoleChanged(object parameter)

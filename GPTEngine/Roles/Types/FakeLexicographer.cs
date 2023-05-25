@@ -24,5 +24,6 @@ namespace GPTEngine.Roles.Types
             
 
         public override ContentType ContentType => ContentType.LyingLexicographer;
+        public override bool ResetEachTime => true;
     }
 }
