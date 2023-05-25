@@ -364,3 +364,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /GPTEngine.Text/appsettings.json
+/GPTEngine.Text/appsettings.json
