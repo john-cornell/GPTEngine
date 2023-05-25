@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Net.Http.Headers;
+using System.Configuration;
 using System.Text;
 
 namespace GPTEngine
@@ -11,10 +12,11 @@ namespace GPTEngine
         string _apiKey;
 
         HttpClient _httpClient = new HttpClient();
-        public GPT()
+        public GPT(string apiKey = "")
         {
             _apiUrl = "https://api.openai.com/v1/chat/completions";
-            _apiKey = "key"; // Replace with your valid API key
+            _apiKey = apiKey;
+
 
             // Set up HttpClient
             _httpClient = new HttpClient();

@@ -13,13 +13,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+
 
 namespace GPTEngine.Text.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
         Conversation _step1, _step2;
-        GPT _gpt = new GPT();
+        GPT _gpt;
 
         private ObservableCollection<string> _history;
 
@@ -31,6 +34,13 @@ namespace GPTEngine.Text.ViewModels
 
         public MainViewModel()
         {
+            IConfiguration configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            _gpt = new GPT(configuration["OpenApiKey"]);
+
             SendToGPT = new AsyncRelayCommand(SendToGPTHandlerAsync);
             RoleChangedCommand = new RelayCommand(OnRoleChanged);
 
