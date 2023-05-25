@@ -14,7 +14,7 @@ namespace GPTEngine
         public GPT()
         {
             _apiUrl = "https://api.openai.com/v1/chat/completions";
-            _apiKey = "Put Ya Key Here"; // Replace with your valid API key
+            _apiKey = "key"; // Replace with your valid API key
 
             // Set up HttpClient
             _httpClient = new HttpClient();
