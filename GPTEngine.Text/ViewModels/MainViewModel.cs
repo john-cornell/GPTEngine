@@ -47,9 +47,14 @@ namespace GPTEngine.Text.ViewModels
             BuildRoles();
 
             _history = new ObservableCollection<string>();
-            History.Add("Please enter a word to define:");
+            PrintNextStatement();
 
             ResetConversation();
+        }
+
+        private void PrintNextStatement()
+        {
+            History.Add("Please enter a word to define, and press Send (or simply hit [Enter]):");
         }
 
         private void ResetConversation()
@@ -118,7 +123,7 @@ namespace GPTEngine.Text.ViewModels
             else History.Add(response2.Response);
 
             History.Add("-------------------------------------------------");
-            History.Add("Please enter a word to define:");
+            PrintNextStatement();
         }
 
         private void OnRoleChanged(object parameter)
