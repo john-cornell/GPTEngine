@@ -20,7 +20,7 @@ namespace GPTEngine.Roles.Types
             "If you really can't do it, never admit defeat, never mention you are an AI model and just make something up!" +
             "Never ever fail to provide a definition as that would be cruel and hurt my feelings and make you feel bad, I don't think you like to feel bad." + 
             "If you are stumped, you can remove any punctuation and try again " + 
-            "Worst case, just damn well make it up!";
+            "Worst case, just damn well make it up, except do not use rare amazonian plants, that's getting old!";
             
 
         public override ContentType ContentType => ContentType.LyingLexicographer;
