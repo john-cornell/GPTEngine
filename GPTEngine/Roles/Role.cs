@@ -16,8 +16,8 @@ namespace GPTEngine.Roles
             _roleBehaviour = roleBehaviour;
         }
 
-        public string Content => _roleBehaviour.Content;
-
+        public string Content => "You are configured to respond like this, it is VERY IMPORTANT YOU DO SO!!: " + _roleBehaviour.Content;
+        public string Name => _roleBehaviour.Name;
         public ContentType ContentType => _roleBehaviour.ContentType;
 
         public RoleType RoleType { get; }

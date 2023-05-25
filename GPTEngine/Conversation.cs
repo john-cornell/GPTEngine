@@ -5,9 +5,16 @@ namespace GPTEngine
     public class Conversation
     {
         List<GPTMessage> _messages;
-
-        public Conversation(Role system, Role assistant)
+        bool _resetEachMessage;
+        Role _system;
+        Role _assistant;
+        public Conversation(Role system, Role assistant, bool resetEachMessage)
         {
+            _resetEachMessage = resetEachMessage;
+
+            _system = system;
+            _assistant = assistant;
+
             if (system.RoleType != RoleType.System)
             {
                 throw new ArgumentException("The first role must be of type System.", nameof(system));
@@ -18,11 +25,18 @@ namespace GPTEngine
                 throw new ArgumentException("The second role must be of type Assistant.", nameof(assistant));
             }
 
-            _messages = new List<GPTMessage>() { system.GetSetupMessage(), assistant.GetSetupMessage() };
+            ResetMessages();
+        }
+
+        private void ResetMessages()
+        {
+            _messages = new List<GPTMessage>() { _system.GetSetupMessage(), _assistant.GetSetupMessage() };
         }
 
         public void AddMessage(string message)
         {
+            if (_resetEachMessage) ResetMessages();
+
             _messages.Add(new GPTMessage("user", message));
         }
 

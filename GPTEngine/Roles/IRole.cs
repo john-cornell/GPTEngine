@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GPTEngine.Roles
 {
-    public enum ContentType { Architect, Coder, Developer, KidsBookWriter, ABiasedIdiot, APoet }
+    public enum ContentType { LyingLexicographer, LexicographicEditor, Architect, Coder, Developer, KidsBookWriter, ABiasedIdiot, APoet, SongWriter, ActionHero, CulinaryArtist }
     public enum RoleType { System, Assistant, User }
     internal interface IRole
     {

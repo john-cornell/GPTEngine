@@ -8,6 +8,7 @@ namespace GPTEngine.Roles
 {
     public abstract class RoleBehaviour
     {
+        public abstract string Name { get; }
         public abstract string Content { get; }
         public abstract ContentType ContentType { get; }
 
@@ -15,5 +16,7 @@ namespace GPTEngine.Roles
         {
             return new Role(roleType, this);
         }
+
+        public virtual bool ResetEachTime => false;
     }
 }
